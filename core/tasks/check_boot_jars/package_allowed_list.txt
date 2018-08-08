@@ -1,4 +1,4 @@
-# Boot jar package name allowed list.
+# Boot jar package name whitelist.
 # Each line is interpreted as a regular expression.
 
 ###################################################
@@ -46,8 +46,6 @@ java\.util\.regex
 java\.util\.spi
 java\.util\.stream
 java\.util\.zip
-# TODO: Remove javax.annotation.processing if possible, see http://b/132338110:
-javax\.annotation\.processing
 javax\.crypto
 javax\.crypto\.interfaces
 javax\.crypto\.spec
@@ -69,8 +67,6 @@ javax\.xml\.transform\.sax
 javax\.xml\.transform\.stream
 javax\.xml\.validation
 javax\.xml\.xpath
-jdk\.internal\.util
-jdk\.internal\.vm\.annotation
 jdk\.net
 org\.w3c\.dom
 org\.w3c\.dom\.ls
@@ -122,6 +118,8 @@ dalvik\..*
 libcore\..*
 android\..*
 com\.android\..*
+
+
 ###################################################
 # android.test.base.jar
 junit\.extensions
@@ -239,8 +237,6 @@ org\.apache\.xalan\.xslt
 # Packages in the google namespace across all bootclasspath jars.
 com\.google\.android\..*
 com\.google\.vr\.platform.*
-com\.google\.i18n\.phonenumbers\..*
-com\.google\.i18n\.phonenumbers
 
 ###################################################
 # Packages used for Android in Chrome OS
@@ -253,9 +249,9 @@ lineageos\.platform
 org\.lineageos\.platform\.internal
 
 ###################################################
-# QCOM WFD
-com\.qualcomm\.wfd
-com\.qualcomm\.wfd\..*
+# ArielOS
+arielos\.platform
+com\.arielos\.platform\.internal
 
 ###################################################
 # CodeAurora IMS functionality needed by frameworks/opt/telephony

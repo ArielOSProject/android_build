@@ -36,6 +36,7 @@ PRODUCT_PACKAGES += \
     make_f2fs \
     requestsync \
     StatementService \
+    vndk_snapshot_package \
 
 PRODUCT_HOST_PACKAGES += \
     fsck.f2fs \
@@ -51,6 +52,7 @@ endif
 # The order here is the same order they end up on the classpath, so it matters.
 PRODUCT_SYSTEM_SERVER_JARS := \
     org.lineageos.platform \
+    com.arielos.platform \
     com.android.location.provider \
     services \
     ethernet-service
