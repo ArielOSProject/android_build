@@ -145,7 +145,11 @@ function check_product()
     if (echo -n $1 | grep -q -e "^lineage_") ; then
         LINEAGE_BUILD=$(echo -n $1 | sed -e 's/^lineage_//g')
     else
-        LINEAGE_BUILD=
+        if (echo -n $1 | grep -q -e "^ariel_") ; then
+           LINEAGE_BUILD=$(echo -n $1 | sed -e 's/^ariel_//g')
+        else
+           LINEAGE_BUILD=
+        fi
     fi
     export LINEAGE_BUILD
 
