@@ -1763,4 +1763,4 @@ addcompletions
 
 export ANDROID_BUILD_TOP=$(gettop)
 
-. $ANDROID_BUILD_TOP/vendor/lineage/build/envsetup.sh
+. $ANDROID_BUILD_TOP/vendor/lineage/build/envsetup.sh && . $ANDROID_BUILD_TOP/vendor/ariel/build/envsetup.sh
