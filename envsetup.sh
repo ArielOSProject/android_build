@@ -632,21 +632,13 @@ function lunch()
         # if we can't find a product, try to grab it off the LineageOS GitHub
         T=$(gettop)
         cd $T > /dev/null
-        if (echo -n $product | grep -q -e "^ariel_") ; then
-           vendor/ariel/build/tools/roomservice.py $product
-        else
-           vendor/lineage/build/tools/roomservice.py $product
-        fi
+        vendor/lineage/build/tools/roomservice.py $product
         cd - > /dev/null
         check_product $product
     else
         T=$(gettop)
         cd $T > /dev/null
-        if (echo -n $product | grep -q -e "^ariel_") ; then
-           vendor/ariel/build/tools/roomservice.py $product true
-        else
-           vendor/lineage/build/tools/roomservice.py $product true
-        fi
+        vendor/lineage/build/tools/roomservice.py $product true
         cd - > /dev/null
     fi
 
