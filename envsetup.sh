@@ -661,7 +661,15 @@ function lunch()
         # if we can't find a product, try to grab it off the LineageOS GitHub
         T=$(gettop)
         cd $T > /dev/null
+<<<<<<< HEAD
         vendor/lineage/build/tools/roomservice.py $product
+=======
+        if (echo -n $product | grep -q -e "^ariel_") ; then
+           vendor/lineage/build/tools/roomservice.py $product true
+        else
+           vendor/lineage/build/tools/roomservice.py $product
+        fi
+>>>>>>> 3b4bebc11... Load dependencies only from lineageos for ariel product
         cd - > /dev/null
         check_product $product
     else
