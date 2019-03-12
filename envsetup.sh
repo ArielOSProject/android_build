@@ -642,7 +642,11 @@ function lunch()
     else
         T=$(gettop)
         cd $T > /dev/null
-        vendor/lineage/build/tools/roomservice.py $product true
+        if (echo -n $product | grep -q -e "^ariel_") ; then
+           vendor/ariel/build/tools/roomservice.py $product true
+        else
+           vendor/lineage/build/tools/roomservice.py $product true
+        fi
         cd - > /dev/null
     fi
 
