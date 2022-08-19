@@ -249,6 +249,11 @@ lineageos\.platform
 org\.lineageos\.platform\.internal
 
 ###################################################
+# ArielOS
+arielos\.platform
+com\.arielos\.platform\.internal
+
+###################################################
 # CodeAurora IMS functionality needed by frameworks/opt/telephony
 # as part of "ims-ext-common"
 org\.codeaurora\.ims.*
