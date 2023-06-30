@@ -230,6 +230,12 @@ function set_lunch_paths()
     fi
     export PYTHONPATH=$ANDROID_PYTHONPATH$PYTHONPATH
 
+    export ANDROID_JAVA_HOME=$(get_abs_build_var ANDROID_JAVA_HOME)
+    export JAVA_HOME=$ANDROID_JAVA_HOME
+    export ANDROID_JAVA_TOOLCHAIN=$(get_abs_build_var ANDROID_JAVA_TOOLCHAIN)
+    export ANDROID_PRE_BUILD_PATHS=$ANDROID_JAVA_TOOLCHAIN:
+    export PATH=$ANDROID_PRE_BUILD_PATHS$PATH
+
     unset ANDROID_PRODUCT_OUT
     export ANDROID_PRODUCT_OUT=$(_get_abs_build_var_cached PRODUCT_OUT)
     export OUT=$ANDROID_PRODUCT_OUT
@@ -500,13 +506,21 @@ function lunch()
         # if we can't find a product, try to grab it off the LineageOS GitHub
         T=$(gettop)
         cd $T > /dev/null
-        vendor/lineage/build/tools/roomservice.py $product
+        if (echo -n $product | grep -q -e "^ariel_") ; then
+           vendor/ariel/build/tools/roomservice.py $product
+        else
+           vendor/lineage/build/tools/roomservice.py $product
+        fi
         cd - > /dev/null
         check_product $product $release
     else
         T=$(gettop)
         cd $T > /dev/null
-        vendor/lineage/build/tools/roomservice.py $product true
+        if (echo -n $product | grep -q -e "^ariel_") ; then
+           vendor/ariel/build/tools/roomservice.py $product true
+        else
+           vendor/lineage/build/tools/roomservice.py $product true
+        fi
         cd - > /dev/null
     fi
 
@@ -1209,4 +1223,4 @@ addcompletions
 
 export ANDROID_BUILD_TOP=$(gettop)
 
-. $ANDROID_BUILD_TOP/vendor/lineage/build/envsetup.sh
+. $ANDROID_BUILD_TOP/vendor/lineage/build/envsetup.sh && . $ANDROID_BUILD_TOP/vendor/ariel/build/envsetup.sh
